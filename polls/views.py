@@ -1,5 +1,3 @@
-from audioop import reverse
-
 from django.urls import reverse
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -41,4 +39,4 @@ def vote(request, question_id):
     else:
         selected_choice.votes = F("votes") + 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse("polls:results", args=(question_id,)))
+        return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
